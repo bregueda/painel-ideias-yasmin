@@ -1,5 +1,136 @@
-.feita {
-  text-decoration: line-through;
-  opacity: 0.6;
+
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap");
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffe4ef, #fbcfe8);
+  font-family: "Quicksand", sans-serif;
+  color: #5a2a3f;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.painel {
+  background: white;
+  width: 380px;
+  padding: 28px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.25);
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-size: 34px;
+  color: #db2777;
+  margin: 0 0 4px;
+  text-shadow: 2px 2px 0 #fbcfe8;
+}
+
+.painel > p {
+  margin: 0 0 20px;
+  color: #b07a93;
+  font-style: italic;
+}
+
+form,
+.ideia {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+form input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 2px solid #fbcfe8;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+form input:focus {
+  border-color: #ec4899;
+}
+
+button {
+  background: #ec4899;
+  color: white;
+  border: none;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #db2777;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.erro {
+  color: #e11d48;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.ideia {
+  margin-top: 10px;
+  padding: 12px;
+  background: #fdf2f8;
+  border-radius: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.ideia:hover {
+  background: #fce7f3;
+}
+
+.ideia input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #ec4899;
+  cursor: pointer;
+}
+
+.ideia span {
+  flex: 1;
+}
+
+.ideia button {
+  background: none;
+  color: #f472b6;
+  padding: 2px 8px;
+}
+
+.ideia button:hover {
+  background: #fbcfe8;
+  color: #be185d;
+}
+/* parte da linha no painel */
+.feita {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 2px dashed #fbcfe8;
+  font-size: 14px;
+  font-weight: 600;
+  color: #b07a93;
+}
