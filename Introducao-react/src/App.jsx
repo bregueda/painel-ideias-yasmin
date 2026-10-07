@@ -4,7 +4,6 @@ import "./App.css"
 export default function App() {
   const [texto, setTexto] = useState("")
   const [ideias, setIdeias] = useState([])
-
   const [erro, setErro] = useState("")
   function adicionar(event) {
     event.preventDefault()
@@ -14,13 +13,11 @@ export default function App() {
     }
 
     const ideia = {
-      id: Date.now(), 
+      id: Date.now(),
       texto: texto.trim(),
       feita: false
     }
-
-  }
-  setIdeias((atual) => [...atual, ideia])
+    setIdeias((atual) => [...atual, ideia])
 
     setTexto("")
     setErro("") 
@@ -34,20 +31,20 @@ export default function App() {
       atual.map((ideia) =>
         ideia.id === id
           ? { ...ideia, feita: !ideia.feita } 
-          : ideia 
+          : ideia
       )
     )
   }
-    // RF5: valores derivados do mesmo estado (sem criar outro useState)
+  function excluir(id) {
+    setIdeias((atual) => atual.filter((ideia) => ideia.id !== id))
+  }
   const total = ideias.length
   const concluidas = ideias.filter((ideia) => ideia.feita).length
 
   return (
     <div className="painel">
-      <h1>💡 Painel de Ideias</h1>
+      <h1> Painel de Ideias</h1>
       <p>Suas ideias em um só lugar.</p>
-
-      {/* RF1: formulário com input controlado (value + onChange juntos) */}
       <form onSubmit={adicionar}>
         <input
           value={texto}
@@ -56,6 +53,34 @@ export default function App() {
         />
         <button type="submit">Adicionar</button>
       </form>
+      {erro && <p className="erro">{erro}</p>}
 
-      {/* RF6: renderização condicional, só aparece se existir erro */}
-      {erro && <p className="erro">{erro}</p>} )
+   
+      <div>
+        {ideias.map((ideia) => (
+          <div className="ideia" key={ideia.id}>
+            <input
+              type="checkbox"
+              checked={ideia.feita}
+              onChange={() => marcar(ideia.id)}
+            />
+            <span className={ideia.feita ? "feita" : ""}>{ideia.texto}</span>
+
+            <button
+              type="button"
+              aria-label="Excluir ideia"
+              onClick={() => excluir(ideia.id)}
+            >
+              ✕
+            </button>
+          </div>
+        ))}
+      </div>
+      <footer>
+        {`${total} ${total === 1 ? "ideia" : "ideias"} no painel · ${concluidas} ${
+          concluidas === 1 ? "concluída" : "concluídas"
+        }`}
+      </footer>
+    </div>
+  )
+}
