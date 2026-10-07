@@ -20,4 +20,22 @@ export default function App() {
     }
 
   }
-}
+  setIdeias((atual) => [...atual, ideia])
+
+    setTexto("")
+    setErro("") 
+  }
+  function aoDigitar(event) {
+    setTexto(event.target.value)
+    setErro("")
+  }
+  function marcar(id) {
+    setIdeias((atual) =>
+      atual.map((ideia) =>
+        ideia.id === id
+          ? { ...ideia, feita: !ideia.feita } 
+          : ideia 
+      )
+    )
+  }
+
